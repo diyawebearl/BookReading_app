@@ -252,11 +252,13 @@ const Book = require('../model/book.model.js');
 const Category = require('../model/category.model.js');
 
 const addBook = async (req, res) => {
-    const { book_title, book_description, book_page, status, category_name, author_id } = req.body;
+    const { book_title, book_description, book_page, status, category_name} = req.body;
     const file = req.file;
+    const tokenData = req.admin;
+    const id = tokenData._id;
 
     try {
-        const author = await Author.findById(author_id);
+        const author = await Author.findById(id);
         if (!author) {
             return res.status(400).send({ error: 'Author not found' });
         }
@@ -476,4 +478,3 @@ module.exports = {
     bookDetail,
     booksByAuthor
 }
-
