@@ -3,17 +3,17 @@ const Book = require('../model/book.model.js');
 const Category = require('../model/category.model.js');
 
 const addBook = async (req, res) => {
-    const { book_title, book_description, book_page, status, category_name, email } = req.body;
+    const { book_title, book_description, book_page, status, category_name } = req.body;
     const file = req.file;
 
-    try {
-          if (!email) {
-            return res.status(400).send({ error: 'Email is required' });
-        }
-        const author = await Author.findOne({ email });
-        if (!author) {
-            return res.status(400).send({ error: 'Author not found' });
-        }
+    // try {
+    //       if (!email) {
+    //         return res.status(400).send({ error: 'Email is required' });
+    //     }
+    //     const author = await Author.findOne({ email });
+    //     if (!author) {
+    //         return res.status(400).send({ error: 'Author not found' });
+    //     }
 
         const category = await Category.findOne({ category_name });
         if (!category) {
