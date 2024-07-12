@@ -7,6 +7,9 @@ const addBook = async (req, res) => {
     const file = req.file;
 
     try {
+          if (!email) {
+            return res.status(400).send({ error: 'Email is required' });
+        }
         const author = await Author.findOne({ email });
         if (!author) {
             return res.status(400).send({ error: 'Author not found' });
