@@ -3,7 +3,7 @@ const Book = require('../model/book.model.js');
 const Category = require('../model/category.model.js');
 
 const addBook = async (req, res) => {
-    const { book_title, book_description, book_page, status, category_name, name } = req.body;
+    const { book_title, book_description, book_page, status, category_name, email } = req.body;
     const file = req.file;
 
     try {
